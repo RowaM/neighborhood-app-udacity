@@ -2,10 +2,16 @@ import React, { Component } from 'react'
 import logo from './logo.svg'
 import './App.css'
 
+import axios from 'axios'
+
 class App extends Component {
 
+  state = {
+    venues : []
+  }
+
   componentDidMount() {
-    this.renderMap()
+    this.getVenues()
   }
 
   renderMap = () => {
@@ -13,11 +19,44 @@ class App extends Component {
     window.initMap = this.initMap
   }
 
+  getVenues = () => {
+    const endPoint = "https://api.foursquare.com/v2/venues/explore?"
+    const parameters = {
+      client_id: "CFSJXPYRI1JTKJAQZMJMQXVNAQUWFOFVHFCKLSBPF1J4RZBL",
+      client_secret: "AXBE1LPLTQ1FNHIWK3A2Z5YN4GHEKAQ0CJFF1X4PHFAGYDWH",
+      query: "coffee",
+      near: "Singapore",
+      v: "20200404"
+    }
+
+    axios.get(endPoint + new URLSearchParams(parameters))
+      .then(response => {
+        this.setState({
+          venues: response.data.response.groups[0].items
+        }, this.renderMap())
+      })
+      .catch(error => {
+        console.log("error " + error)
+      })
+  }
+
+
   initMap = () => {
      var map = new window.google.maps.Map(document.getElementById('map'), {
-      center: {lat: 36.316666, lng: 74.649986},
-      zoom: 15
+      center: {lat: 1.352083, lng: 103.819836},
+      zoom: 12
     })
+
+     this.state.venues.map(myVenue =>{
+
+      var marker = new window.google.maps.Marker({
+      position: {lat: myVenue.venue.location.lat, 
+                 lng: myVenue.venue.location.lng},
+      map: map,
+      title: myVenue.venue.name
+      });
+     })
+
   }
 
   render() {
