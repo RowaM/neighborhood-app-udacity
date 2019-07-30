@@ -1,8 +1,10 @@
-import React, { Component } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import React, { Component } from 'react';
+import { Column, Row } from 'simple-flexbox';
+import './App.css';
+import SideBar from './SideBar/SideBar.js';
 
-import axios from 'axios'
+
+import axios from 'axios';
 
 class App extends Component {
 
@@ -47,7 +49,11 @@ class App extends Component {
       zoom: 12
     })
 
-     this.state.venues.map(myVenue =>{
+   var infowindow = new window.google.maps.InfoWindow()
+
+   this.state.venues.map(myVenue => {
+
+      var contentString = `${myVenue.venue.name}`
 
       var marker = new window.google.maps.Marker({
       position: {lat: myVenue.venue.location.lat, 
@@ -55,17 +61,40 @@ class App extends Component {
       map: map,
       title: myVenue.venue.name
       });
-     })
+
+      marker.addListener('mouseover', function() {
+
+          infowindow.setContent(contentString)
+
+          infowindow.open(map, marker);
+        });
+
+
+   })
 
   }
 
   render() {
     return (
-      <main>
-         <div id="map"></div>
-      </main>
+      <Row wrap flexGrow={1} vertical="center">
+          
+          <Column flexGrow={1}> 
+
+              <SideBar />
+
+          </Column>  
+
+          <Column flexGrow={3}> 
+
+            <div id="map"></div>
+            
+          </Column>    
+      
+      </Row>
       )
   }
+
+
 }
 
 
