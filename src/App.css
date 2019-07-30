@@ -42,13 +42,16 @@ html, body {
   padding: 0;
 }
 
+.side-bar {
+  padding: 25px 15px 0 25px;
+}
+
 .logo {
-  max-width: 230px;
-  padding-left: 15px;
+  max-width: 180px;
 }
 
 
-
+/* Dropdown menu styles. */
 .dropdown {
      position: relative;
      display: inline-block;

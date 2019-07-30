@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import { Column, Row } from 'simple-flexbox';
 import LogoComponent from './LogoComponent.js';
+import DropDown from './DropDown.js';
 
 
 class SideBar extends Component {
 
 	render() {
 		return (
-			<LogoComponent />
+			<div>
+				<LogoComponent />
+				<DropDown />
+			</div>
 			)
 	}
 

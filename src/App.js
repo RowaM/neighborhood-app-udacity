@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Column, Row } from 'simple-flexbox';
 import './App.css';
-import SideBar from './SideBar/SideBar.js';
+import LogoComponent from './LogoComponent.js';
+import DropDown from './DropDown.js';
 
 
 import axios from 'axios';
@@ -26,7 +27,7 @@ class App extends Component {
     const parameters = {
       client_id: "CFSJXPYRI1JTKJAQZMJMQXVNAQUWFOFVHFCKLSBPF1J4RZBL",
       client_secret: "AXBE1LPLTQ1FNHIWK3A2Z5YN4GHEKAQ0CJFF1X4PHFAGYDWH",
-      query: "coffee",
+      query: "Outdoors & Recreation",
       near: "Singapore",
       v: "20200404"
     }
@@ -49,17 +50,19 @@ class App extends Component {
       zoom: 12
     })
 
+
    var infowindow = new window.google.maps.InfoWindow()
 
    this.state.venues.map(myVenue => {
 
-      var contentString = `${myVenue.venue.name}`
+      var contentString = `<strong>${myVenue.venue.name}</strong> <br/>
+                           ${myVenue.venue.location.address} <br/>`
 
       var marker = new window.google.maps.Marker({
       position: {lat: myVenue.venue.location.lat, 
                  lng: myVenue.venue.location.lng},
       map: map,
-      title: myVenue.venue.name
+      title: myVenue.venue
       });
 
       marker.addListener('mouseover', function() {
@@ -67,6 +70,7 @@ class App extends Component {
           infowindow.setContent(contentString)
 
           infowindow.open(map, marker);
+
         });
 
 
@@ -76,18 +80,21 @@ class App extends Component {
 
   render() {
     return (
-      <Row wrap flexGrow={1} vertical="center">
+      <Row wrap flexGrow={1} >
           
           <Column flexGrow={1}> 
 
-              <SideBar />
+              <div className="side-bar">
+                <LogoComponent />
+                <DropDown dataFromApp = {this.state.venues} />
+              </div>
 
           </Column>  
 
-          <Column flexGrow={3}> 
+          <Column flexGrow={4}> 
 
             <div id="map"></div>
-            
+
           </Column>    
       
       </Row>

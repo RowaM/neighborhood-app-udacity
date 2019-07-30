@@ -3,9 +3,11 @@ import React, { Component } from 'react';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 
+
 const options = [
   'Food', 'Hotel', 'Museum', 'Shopping', 'Theme parks'
 ]
+
 
 class DropDown extends Component {
   constructor (props) {
@@ -37,7 +39,7 @@ class DropDown extends Component {
         <section>
           <h4>Location details</h4>
           <div className='code'>
-            The data from parent is:{this.props.venuesFromApp}
+            {this.props.dataFromApp.map((item,name) => <li key={name}>{name}</li>)}
           </div>
         </section>
       </section>
