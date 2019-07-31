@@ -6,7 +6,7 @@ This is the final project for [Front-End Web Developer Udacity Nanodegree Progra
 
 Find points of outdoor recreation around Singapore.
 
-![preview](/preview.png)
+![preview](https://github.com/RowaM/neighborhood-app-udacity/blob/master/preview.PNG)
 
 ## Table of Contents
 
