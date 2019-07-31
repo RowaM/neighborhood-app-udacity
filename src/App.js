@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Column, Row } from 'simple-flexbox';
 import './App.css';
 import LogoComponent from './LogoComponent.js';
-import DropDown from './DropDown.js';
+import SideList from './SideList.js';
 
 
 import axios from 'axios';
@@ -18,7 +18,7 @@ class App extends Component {
   }
 
   renderMap = () => {
-    loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyDonQhgJpBJtRi7JaM1T0nycwkJt7_MD4g&v=2&callback=initMap")
+    loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyDonQhgJpBJtRi7JaM1T0nycwkJt7_MD4g&callback=initMap")
     window.initMap = this.initMap
   }
 
@@ -82,16 +82,16 @@ class App extends Component {
     return (
       <Row wrap flexGrow={1} >
           
-          <Column flexGrow={1}> 
+          <Column flexGrow={0}> 
 
               <div className="side-bar">
                 <LogoComponent />
-                <DropDown dataFromApp = {this.state.venues} />
+                <SideList dataFromApp = {this.state.venues} />
               </div>
 
           </Column>  
 
-          <Column flexGrow={4}> 
+          <Column flexGrow={1}> 
 
             <div id="map"></div>
 
