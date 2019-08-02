@@ -35,4 +35,3 @@ To run app:
 * https://stackoverflow.com/questions/57288848/how-to-access-the-passed-prop-array-inside-the-child-component/
 * https://towardsdatascience.com/passing-data-between-react-components-parent-children-siblings-a64f89e24ecf
 * https://stackoverflow.com/questions/9012537/how-to-get-the-element-clicked-for-the-whole-document/9012576
-
