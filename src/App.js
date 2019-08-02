@@ -56,7 +56,7 @@ class App extends Component {
    this.state.venues.map(myVenue => {
 
       var contentString = `<strong>${myVenue.venue.name}</strong> <br/>
-                           ${myVenue.venue.location.address} <br/>`
+                           ${myVenue.venue.location.address}`
 
       var marker = new window.google.maps.Marker({
       position: {lat: myVenue.venue.location.lat, 
@@ -65,7 +65,9 @@ class App extends Component {
       title: myVenue.venue
       });
 
-      marker.addListener('mouseover', function() {
+      marker.addListener('click', function() {
+
+        console.log(myVenue.venue.name);
 
           infowindow.setContent(contentString)
 
@@ -86,7 +88,8 @@ class App extends Component {
 
               <div className="side-bar">
                 <LogoComponent />
-                <SideList dataFromApp = {this.state.venues} />
+                <SideList dataFromApp = {this.state.venues} initMap={this.initMap} />
+
               </div>
 
           </Column>  
