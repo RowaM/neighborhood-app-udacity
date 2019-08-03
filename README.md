@@ -23,7 +23,7 @@ To run app:
 2. Run `npm install`
 3. Run `npm start`
 
-## Attributions
+## What I used to build the project 
 
 1. [Google Maps API](https://maps.google.com)
 2. [Foursquare](https://https://foursquare.com)

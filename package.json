@@ -4,9 +4,11 @@
   "private": true,
   "dependencies": {
     "axios": "^0.19.0",
+    "browser-router": "^0.2.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-dropdown": "^1.6.4",
+    "react-responsive": "^7.0.0",
     "react-scripts": "3.0.1",
     "simple-flexbox": "^2.2.0"
   },

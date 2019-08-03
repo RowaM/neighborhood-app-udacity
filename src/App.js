@@ -62,7 +62,7 @@ class App extends Component {
       position: {lat: myVenue.venue.location.lat, 
                  lng: myVenue.venue.location.lng},
       map: map,
-      title: myVenue.venue
+      "title": "myVenue.venue"
       });
 
       marker.addListener('click', function() {
@@ -87,6 +87,7 @@ class App extends Component {
           <Column flexGrow={0}> 
 
               <div className="side-bar">
+
                 <LogoComponent />
                 <SideList dataFromApp = {this.state.venues} initMap={this.initMap} />
 
