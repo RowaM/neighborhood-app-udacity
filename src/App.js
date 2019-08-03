@@ -43,6 +43,7 @@ class App extends Component {
       })
   }
 
+//Initializing map and fetching venues infowindow from marker
 
   initMap = () => {
      var map = new window.google.maps.Map(document.getElementById('map'), {
