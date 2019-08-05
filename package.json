@@ -10,6 +10,7 @@
     "react-dropdown": "^1.6.4",
     "react-responsive": "^7.0.0",
     "react-scripts": "3.0.1",
+    "react-search-input": "^0.11.3",
     "simple-flexbox": "^2.2.0"
   },
   "scripts": {
