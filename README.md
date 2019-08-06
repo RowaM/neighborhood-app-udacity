@@ -27,9 +27,6 @@ To run app:
 
 1. [Google Maps API](https://maps.google.com)
 2. [Foursquare](https://https://foursquare.com)
-3. [React flexbox grid](https://github.com/roylee0704/react-flexbox-grid)
-4. [React Docs](https://reactjs.org/docs/getting-started.html)
-5. [React Search Input](https://www.npmjs.com/package/react-search-input)
 
 ## Resources
 

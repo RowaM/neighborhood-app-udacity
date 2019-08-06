@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import SideList from './SideList';
+import '../index.css';
+import '../App.css';
 
 
 class App extends Component {
@@ -161,7 +163,7 @@ class App extends Component {
                         var location_data = data.response.venues[0];
                         var name = location_data.name;
                         var address = location_data.location.address;
-                        self.state.infowindow.setContent(name + '<br>' + address);
+                        self.state.infowindow.setContent('<b>' + name + '</b>' + '<br>' + address);
                     });
                 }
             )
