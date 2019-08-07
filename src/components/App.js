@@ -3,13 +3,15 @@ import SideList from './SideList';
 import '../index.css';
 import '../App.css';
 
-
 class App extends Component {
+  
+
     /**
      * Constructor
      */
     constructor(props) {
         super(props);
+        // this.checkConnection = window.navigator.onLine;
         this.state = {
             'myVenues': [
                 {
@@ -145,32 +147,47 @@ class App extends Component {
     /**
      * Fetching venue data from the foursquare api for the marker & infowindow
      */
-    getMarkerInfo(marker) {
-        var self = this;
-        var clientId = "CFSJXPYRI1JTKJAQZMJMQXVNAQUWFOFVHFCKLSBPF1J4RZBL";
-        var clientSecret = "AXBE1LPLTQ1FNHIWK3A2Z5YN4GHEKAQ0CJFF1X4PHFAGYDWH";
-        var url = "https://api.foursquare.com/v2/venues/search?client_id=" + clientId + "&client_secret=" + clientSecret + "&v=20130815&ll=" + marker.getPosition().lat() + "," + marker.getPosition().lng() + "&limit=1";
-        fetch(url)
-            .then(
-                function (response) {
-                    if (response.status !== 200) {
-                        self.state.infowindow.setContent("Sorry cannot find data");
-                        return;
-                    }
+     
+        getMarkerInfo(marker) {
+            var self = this;
+            var clientId = "CFSJXPYRI1JTKJAQZMJMQXVNAQUWFOFVHFCKLSBPF1J4RZBL";
+            var clientSecret = "AXBE1LPLTQ1FNHIWK3A2Z5YN4GHEKAQ0CJFF1X4PHFAGYDWH";
+            var url = "https://api.foursquare.com/v2/venues/search?client_id=" + clientId + "&client_secret=" + clientSecret + "&v=20130815&ll=" + marker.getPosition().lat() + "," + marker.getPosition().lng() + "&limit=1";
+            
 
-                    // get name and location in infomap
-                    response.json().then(function (data) {
-                        var location_data = data.response.venues[0];
-                        var name = location_data.name;
-                        var address = location_data.location.address;
-                        self.state.infowindow.setContent('<b>' + name + '</b>' + '<br>' + address);
-                    });
-                }
-            )
-            .catch(function (err) {
-                self.state.infowindow.setContent("Sorry cannot find data");
-            });
-    }
+           // If connection online then fetch data else inform
+           if (window.navigator.onLine != true) {
+                    console.log("No connection!");
+                    self.state.infowindow.setContent("No connection!");
+            }
+            else
+            {
+                
+            fetch(url)
+                .then(
+                    function (response) {
+                        if (response.status !== 200) {
+                           self.state.infowindow.setContent("Sorry cannot find data");
+                            return;
+                        }
+
+                        // get name and location in infomap
+                        
+                        response.json().then(function (data) {
+                            var location_data = data.response.venues[0];
+                            var name = location_data.name;
+                            var address = location_data.location.address;
+                            self.state.infowindow.setContent('<b>' + name + '</b>' + '<br>' + address);
+                        });
+                    }
+                )
+                .catch(function (err) {
+                    self.state.infowindow.setContent("Sorry cannot find data");
+                }); 
+            }
+            
+        }
+
 
     /**
      * Close the infowindow for the marker

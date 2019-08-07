@@ -53,7 +53,7 @@ height: 100%;
 }
 ul{
  padding-right: 10px;
- list-style-type: square;
+ list-style-type: none;
 }
 li{
   padding-bottom: 10px;
